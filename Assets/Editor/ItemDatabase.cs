@@ -4,6 +4,12 @@ using UnityEngine;
 
 public abstract class ItemDatabase<T> : EditorWindow where T : class
 {
+    /*[MenuItem("Window/Item Manager/Item Database")]
+    public static void ShowWindow()
+    {
+        GetWindow<ItemDatabase>("Item Database");
+    }*/
+
     protected Vector2 scrollPosition;
     protected T selectedItem;
     protected float propertiesSectionWidth = 400f;
@@ -19,7 +25,11 @@ public abstract class ItemDatabase<T> : EditorWindow where T : class
     protected virtual void OnGUI()
     {
         GUILayout.BeginHorizontal();
-        
+        // Button to open the Weapon Creation window
+        if (GUILayout.Button("Create New Weapon"))
+        {
+            WeaponCreation.ShowWindow();
+        }
         DrawItemList();
         
         GUILayout.BeginVertical(GUI.skin.box, GUILayout.Width(propertiesSectionWidth));
@@ -50,7 +60,5 @@ public abstract class ItemDatabase<T> : EditorWindow where T : class
         if (GUILayout.Button("Import from CSV")) ImportItemsFromCSV();
         if (GUILayout.Button("Delete Selected Item")) DeleteSelectedItem();
         if (GUILayout.Button("Duplicate Selected Item")) DuplicateSelectedItem();
-        
-        // ... additional top-left options, like 'Create New Item' or 'Search' ...
     }
 }

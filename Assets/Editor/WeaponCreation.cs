@@ -11,10 +11,16 @@ public class WeaponCreation : BaseItemCreation<Weapon>
 
     void onGUI()
     {
-        DrawCommonFields();
+        weaponType = (WeaponType)EditorGUILayout.EnumPopup("Weapon Type:", weaponType);
+        attackPower = EditorGUILayout.FloatField("Attack Power:", attackPower);
+        attackSpeed = EditorGUILayout.FloatField("Attack Speed:", attackSpeed);
+        durability = EditorGUILayout.FloatField("Durability:", durability);
+        range = EditorGUILayout.FloatField("Range:", range);
+        criticalHitChance = EditorGUILayout.FloatField("Critical Hit Chance:", criticalHitChance);
+        //DrawCommonFields();
     }
 
-    protected void DrawCommonFields()
+    /*protected void DrawCommonFields()
     {
         base.DrawCommonFields();
 
@@ -25,7 +31,7 @@ public class WeaponCreation : BaseItemCreation<Weapon>
         durability = EditorGUILayout.FloatField("Durability:", durability);
         range = EditorGUILayout.FloatField("Range:", range);
         criticalHitChance = EditorGUILayout.FloatField("Critical Hit Chance:", criticalHitChance);
-    }
+    }*/
 
     protected void CreateItem()
     {
